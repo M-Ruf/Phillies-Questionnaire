@@ -161,18 +161,6 @@ head(df_obp)
 
 
 #Average PA of each player , omit missing values
-# By Name
-avg_pa <- df_obp %>% 
-     group_by(Name) %>% 
-     summarise(avg_pa = mean(c(PA_16, PA_17, PA_18, PA_19, PA_20), na.rm = TRUE)) %>% 
-     print()
-
-# By playerid
-avg_pa <- df_obp %>% 
-     group_by(playerid) %>% 
-     summarise(avg_pa = mean(c(PA_16, PA_17, PA_18, PA_19, PA_20), na.rm = TRUE)) %>% 
-     print()
-
 # Add average pa per player to df
 
 df_obp <- df_obp %>%
