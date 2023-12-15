@@ -3,8 +3,6 @@
 # Author:   Melissa Ruf
 
 # INSTALL AND LOAD PACKAGES ################################
-
-# Install tidyverse and caret
 if(!require("pacman")) install.packages(c("pacman"))
 pacman::p_load(
      GGally, 
