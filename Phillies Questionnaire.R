@@ -19,19 +19,20 @@ pacman::p_load(
 # Question 7: Lottery ticket
 
 # Part A
-ticket_value <- rnorm(1, mean = 50, sd = 50)
-ticket_mean <- 50
-ticket_sd <- 50
 
-p_less_than_one <- (1-ticket_mean) / ticket_sd
-p_greater_than_hundred <- 1 - ((100 - ticket_mean) / ticket_sd)
-p_inbtween <- p_greater_than_hundred - p_less_than_one
+p_less_than_one <- pnorm(q=1, mean = 50, sd = 50)
+ # [1] 0.1635431
 
-expected_value <- (p_less_than_one*1) + (p_inbtween*ticket_value) + (p_greater_than_hundred * (ticket_value+20))
+p_greater_than_hundred <- pnorm(q=100, mean = 50, sd =50)
+ # [1] 0.1586553
+
+expected_value <- (p_less_than_one*1) + (p_greater_than_hundred * (ticket_value+20)) + 50
 expected_value
-     # [1] 9.204843
+# [1] 56.79919
+# $56.80
 
 # Part B
+
 ticket_draw <- function() {
      ticket_value <- rnorm(1, mean = 50, sd = 50)
      
@@ -68,10 +69,10 @@ expected_value_one_entry <- mean(one_entry_values)
 
 # Results
 cat("Expected Value of One Ticket:", expected_value_one_ticket, "\n")  
-     #Expected Value of One Ticket: 57.41327 
+     #Expected Value of One Ticket: 57.41327 or $57.41
 
 cat("Expected Value of an Entry:", expected_value_one_entry, "\n")
-     #Expected Value of an Entry: 84.48581 
+     #Expected Value of an Entry: 84.48581  or $84.49
 
 
 
