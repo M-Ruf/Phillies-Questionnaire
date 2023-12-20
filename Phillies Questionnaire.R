@@ -300,25 +300,15 @@ index <- createDataPartition(df_obp_clean$OBP_21, p=0.7, list = FALSE)
 train_data <- df_obp_clean[index, ]
 test_data <- df_obp_clean[-index, ]
 
-# Use lm3 to predict training data
+# Train model
 preds_train <- lm3 %>% 
      predict(newdata = train_data)
 preds_train <- round(preds_train, 3)
+preds_train
 
 # Actual values within training data
 actual_train <- train_data$OBP_21
 
-# Calculate Mean Absolute Error
-mae <- mean(abs(preds_train - actual_train))
-mae  # 0.035
-
-# Calculate Mean Squared Error
-mse <- mean((preds_train - actual_train)^2)
-mse  # 0.002
-
-# Calculate Root Mean Squared Error
-rmse <- sqrt(mse)
-rmse  # 0.045
 
 
 
@@ -357,14 +347,6 @@ df_obp_clean %>%
      mutate(predicted_values = fitted(lm3)) %>% 
      print() %>% 
      view()
-
-# Accuracy
-table(
-     actualclass = actual_test,
-     predictedclass = preds_test
-) %>% 
-     confusionMatrix() %>% 
-     print()
 
 # Interpretation
 
