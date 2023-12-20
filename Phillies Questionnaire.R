@@ -358,6 +358,14 @@ df_obp_clean %>%
      print() %>% 
      view()
 
+# Accuracy
+table(
+     actualclass = actual_test,
+     predictedclass = preds_test
+) %>% 
+     confusionMatrix() %>% 
+     print()
+
 # Interpretation
 
 # The low MAE, MSE, and RMSE values indicate good predictive performance
